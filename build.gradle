@@ -39,3 +39,7 @@ dependencyManagement {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+tasks.bootJar {
+    archiveFileName.set("docs-storage.jar")
+}
