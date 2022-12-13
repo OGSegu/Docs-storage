@@ -61,5 +61,4 @@ class LuceneServiceTest {
         writer.close();
         luceneService.write(temp1);
     }
-
 }
