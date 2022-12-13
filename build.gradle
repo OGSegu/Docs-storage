@@ -6,14 +6,18 @@ plugins {
 }
 group 'org.example'
 version '1.0-SNAPSHOT'
+sourceCompatibility = '11'
+
 
 repositories {
     mavenCentral()
 }
 
+
 ext {
     set('vaadinVersion', "23.2.8")
 }
+
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
@@ -38,4 +42,11 @@ dependencyManagement {
 
 tasks.named('test') {
     useJUnitPlatform()
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
 }

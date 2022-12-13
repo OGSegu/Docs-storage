@@ -19,11 +19,34 @@ import service.PersistenceService;
 @RestController
 public class MainControllerImpl {
 
+
     private final LuceneService luceneService;
 
     @Autowired
     public MainControllerImpl(LuceneService luceneService) {
         this.luceneService = luceneService;
+    }
+
+    private final PersistenceService persistenceService;
+    private final LuceneService luceneService;
+
+    @Autowired
+    public MainControllerImpl(PersistenceService persistenceService,
+                              LuceneService luceneService) {
+        this.persistenceService = persistenceService;
+        this.luceneService = luceneService;
+    }
+
+    @PostMapping("/store")
+    boolean store(@RequestPart MultipartFile file) {
+        try {
+            File storedFile = persistenceService.storeMultiPartFile(file);
+            luceneService.write(storedFile);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(); // log
+            return false;
+        }
     }
 
     @GetMapping("/search")
