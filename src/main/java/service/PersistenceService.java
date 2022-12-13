@@ -7,6 +7,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +26,6 @@ public class PersistenceService {
             Files.createDirectories(UPLOADED_DIR);
         }
     }
-
 
     public File store(String fileName, InputStream fileContent) throws IOException {
         long timestamp = System.currentTimeMillis();

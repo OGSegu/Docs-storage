@@ -19,16 +19,8 @@ import service.PersistenceService;
 @RestController
 public class MainControllerImpl {
 
-
     private final LuceneService luceneService;
-
-    @Autowired
-    public MainControllerImpl(LuceneService luceneService) {
-        this.luceneService = luceneService;
-    }
-
     private final PersistenceService persistenceService;
-    private final LuceneService luceneService;
 
     @Autowired
     public MainControllerImpl(PersistenceService persistenceService,
@@ -48,7 +40,7 @@ public class MainControllerImpl {
             return false;
         }
     }
-
+    
     @GetMapping("/search")
     List<String> search(@RequestParam String text) {
         QueryBuilder queryBuilder = new QueryBuilder(new RussianAnalyzer());
