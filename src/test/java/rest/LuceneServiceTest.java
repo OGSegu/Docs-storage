@@ -15,7 +15,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,4 +52,13 @@ class LuceneServiceTest {
         assertEquals(search.get(0), temp1.getName());
     }
 
+    @Test
+    void test2() throws IOException {
+        when(luceneService.getIndexDir()).thenReturn(Paths.get("./idx"));
+        File temp1 = new File("temp1");
+        BufferedWriter writer = new BufferedWriter(new FileWriter(temp1));
+        writer.write("test words");
+        writer.close();
+        luceneService.write(temp1);
+    }
 }
