@@ -19,6 +19,14 @@ import service.PersistenceService;
 @RestController
 public class MainControllerImpl {
 
+
+    private final LuceneService luceneService;
+
+    @Autowired
+    public MainControllerImpl(LuceneService luceneService) {
+        this.luceneService = luceneService;
+    }
+
     private final PersistenceService persistenceService;
     private final LuceneService luceneService;
 
