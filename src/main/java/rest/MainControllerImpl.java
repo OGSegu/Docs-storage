@@ -20,12 +20,27 @@ import service.PersistenceService;
 public class MainControllerImpl {
 
     private final LuceneService luceneService;
+    private final PersistenceService persistenceService;
 
     @Autowired
-    public MainControllerImpl(LuceneService luceneService) {
+    public MainControllerImpl(PersistenceService persistenceService,
+                              LuceneService luceneService) {
+        this.persistenceService = persistenceService;
         this.luceneService = luceneService;
     }
 
+    @PostMapping("/store")
+    boolean store(@RequestPart MultipartFile file) {
+        try {
+            File storedFile = persistenceService.storeMultiPartFile(file);
+            luceneService.write(storedFile);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(); // log
+            return false;
+        }
+    }
+    
     @GetMapping("/search")
     List<String> search(@RequestParam String text) {
         QueryBuilder queryBuilder = new QueryBuilder(new RussianAnalyzer());
