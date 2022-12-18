@@ -1,3 +1,5 @@
+`Master` [![Test](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml/badge.svg)](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml)  
+`Development` [![Test](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml/badge.svg?branch=development)](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml)
 # Docs-storage
 Service that allows to store DOC, DOCS, PDF files and retrieve it by queries
 
