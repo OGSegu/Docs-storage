@@ -1,8 +1,11 @@
-package frontend;
+package main.java.frontend;
 
 import java.io.File;
 import java.io.InputStream;
 import java.util.List;
+
+import main.java.lucene.LuceneService;
+import main.java.service.PersistenceService;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.QueryBuilder;
@@ -15,9 +18,6 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.upload.Upload;
 import com.vaadin.flow.component.upload.receivers.MemoryBuffer;
 import com.vaadin.flow.router.Route;
-
-import lucene.LuceneService;
-import service.PersistenceService;
 
 @Route("")
 public class MainView extends HorizontalLayout {
