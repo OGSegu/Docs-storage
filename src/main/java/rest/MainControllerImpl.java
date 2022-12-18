@@ -1,7 +1,10 @@
-package rest;
+package main.java.rest;
 
 import java.io.File;
 import java.util.List;
+
+import main.java.lucene.LuceneService;
+import main.java.service.PersistenceService;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.QueryBuilder;
@@ -13,8 +16,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import lucene.LuceneService;
-import service.PersistenceService;
+
 
 @RestController
 public class MainControllerImpl {
@@ -33,7 +35,8 @@ public class MainControllerImpl {
     @PostMapping("/store")
     boolean store(@RequestPart MultipartFile file) {
         try {
-            File storedFile = persistenceService.storeMultiPartFile(file);
+            String fileName = file.getOriginalFilename();
+            File storedFile = persistenceService.store(fileName, file.getInputStream());
             luceneService.write(storedFile);
             return true;
         } catch (Exception e) {

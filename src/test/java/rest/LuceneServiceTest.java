@@ -1,14 +1,14 @@
 package rest;
 
-import lucene.LuceneServiceImpl;
+import main.java.lucene.LuceneServiceImpl;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.QueryBuilder;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.api.io.CleanupMode;
-import org.junit.jupiter.api.io.TempDir;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -16,6 +16,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -26,15 +27,26 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 class LuceneServiceTest {
 
-    @TempDir(cleanup = CleanupMode.ALWAYS)
-    Path IDX_DIR;
+    private static Path tempDir;
 
     @Spy
     LuceneServiceImpl luceneService;
 
+
+
+    @BeforeAll
+    public static void before() throws IOException {
+        tempDir = Files.createTempDirectory(null);
+    }
+
     @BeforeEach
     public void setUp() {
-        when(luceneService.getIndexDir()).thenReturn(IDX_DIR);
+        when(luceneService.getIndexDir()).thenReturn(tempDir);
+    }
+
+    @AfterAll
+    public static void after() {
+        tempDir.toFile().delete();
     }
 
     @Test

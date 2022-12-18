@@ -1,4 +1,4 @@
-package lucene;
+package main.java.lucene;
 
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.document.Document;
