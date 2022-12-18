@@ -1,19 +1,12 @@
-package service;
+package main.java.service;
+
+import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import org.apache.tika.utils.StringUtils;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
-
 
 @Service
 public class PersistenceService {
@@ -26,23 +19,10 @@ public class PersistenceService {
         }
     }
 
-
     public File store(String fileName, InputStream fileContent) throws IOException {
         long timestamp = System.currentTimeMillis();
         Path file = UPLOADED_DIR.resolve(timestamp + "-" + fileName);
         Files.copy(fileContent, file);
-        return file.toFile();
-    }
-
-    public File storeMultiPartFile(MultipartFile multipartFile) throws IOException {
-        long timestamp = System.currentTimeMillis();
-        String fileName = multipartFile.getOriginalFilename();
-        if (StringUtils.isBlank(fileName)) {
-            fileName = multipartFile.getName();
-        }
-        Path file = UPLOADED_DIR.resolve(fileName + "_" + timestamp);
-        Files.createFile(file);
-        multipartFile.transferTo(file);
         return file.toFile();
     }
 

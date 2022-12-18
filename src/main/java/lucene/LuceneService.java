@@ -1,12 +1,8 @@
-package lucene;
+package main.java.lucene;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.util.List;
 import org.apache.lucene.search.Query;
 
 import java.io.File;
-import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 

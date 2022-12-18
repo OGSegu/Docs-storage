@@ -1,6 +1,6 @@
 package rest;
 
-import lucene.LuceneServiceImpl;
+import main.java.lucene.LuceneServiceImpl;
 import org.apache.lucene.analysis.ru.RussianAnalyzer;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.util.QueryBuilder;
