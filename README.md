@@ -1,4 +1,4 @@
-`Master` [![Test](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml/badge.svg?branch=development)](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml)  
+`Master` [![Test](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml/badge.svg?branch=main)](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml)  
 `Development` [![Test](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml/badge.svg?branch=development)](https://github.com/OGSegu/Docs-storage/actions/workflows/gradle.yml)
 
 # Docs-storage
